@@ -6,7 +6,7 @@ module PayPal::SDK::Core
       class Base < PayPal::SDK::Core::API::DataTypes::Base
       end
 
-      class Address < Base
+      class PaypalAddress < Base
         def self.load_members
           object_of :street_address, String
           object_of :locality, String
@@ -34,7 +34,7 @@ module PayPal::SDK::Core
           object_of :language, String
           object_of :verified, Boolean
           object_of :phone_number, String
-          object_of :address, Address
+          object_of :address, PaypalAddress
           object_of :verified_account, Boolean
           object_of :account_type, String
           object_of :account_creation_date, String

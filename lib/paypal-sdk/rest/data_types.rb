@@ -155,7 +155,7 @@ module PayPal::SDK
           object_of :cvv2, String
           object_of :first_name, String
           object_of :last_name, String
-          object_of :billing_address, Address
+          object_of :billing_address, PaypalAddress
           object_of :external_customer_id, String
           object_of :state, String
           object_of :valid_until, String
@@ -196,7 +196,7 @@ module PayPal::SDK
         end
       end
 
-      class Address < Base
+      class PaypalAddress < Base
         def self.load_members
           object_of :line1, String
           object_of :line2, String
@@ -240,7 +240,7 @@ module PayPal::SDK
           object_of :first_name, String
           object_of :last_name, String
           object_of :billing_country, String
-          object_of :billing_address, Address
+          object_of :billing_address, PaypalAddress
           object_of :external_customer_id, String
           object_of :status, String
           object_of :valid_until, String
@@ -263,7 +263,7 @@ module PayPal::SDK
           object_of :first_name, String
           object_of :last_name, String
           object_of :birth_date, String
-          object_of :billing_address, Address
+          object_of :billing_address, PaypalAddress
           object_of :state, String
           object_of :confirmation_status, String
           object_of :payer_id, String
@@ -334,7 +334,7 @@ module PayPal::SDK
           object_of :code, String
           object_of :name, String
           object_of :description, String
-          object_of :minimum_purchase_amount, Currency
+          object_of :minimum_purchase_amount, PaypalCurrency
           object_of :logo_image_url, String
           object_of :expiry_date, String
           object_of :type, String
@@ -342,7 +342,7 @@ module PayPal::SDK
         end
       end
 
-      class Currency < Base
+      class PaypalCurrency < Base
         def self.load_members
           object_of :currency, String
           object_of :value, String
@@ -371,7 +371,7 @@ module PayPal::SDK
           object_of :funding_mode, String
           object_of :funding_instrument_type, String
           object_of :soft_descriptor, String
-          object_of :amount, Currency
+          object_of :amount, PaypalCurrency
           object_of :legal_text, String
           object_of :funding_detail, FundingDetail
           object_of :additional_text, String
@@ -411,8 +411,8 @@ module PayPal::SDK
       class InstallmentOption < Base
         def self.load_members
           object_of :term, Integer
-          object_of :monthly_payment, Currency
-          object_of :discount_amount, Currency
+          object_of :monthly_payment, PaypalCurrency
+          object_of :discount_amount, PaypalCurrency
           object_of :discount_percentage, Percentage
         end
       end
@@ -439,7 +439,7 @@ module PayPal::SDK
           object_of :tax_id, String
           object_of :tax_id_type, String
           object_of :country_code, String
-          object_of :billing_address, Address
+          object_of :billing_address, PaypalAddress
           object_of :shipping_address, ShippingAddress
         end
       end
@@ -581,7 +581,7 @@ module PayPal::SDK
 
       class RelatedResources < Base
         def self.load_members
-          object_of :order, Order
+          object_of :order, PaypalOrder
           object_of :sale, Sale
           object_of :authorization, Authorization
           object_of :capture, Capture
@@ -602,8 +602,8 @@ module PayPal::SDK
           object_of :clearing_time, String
           object_of :recipient_fund_status, String
           object_of :hold_reason, String
-          object_of :transaction_fee, Currency
-          object_of :receivable_amount, Currency
+          object_of :transaction_fee, PaypalCurrency
+          object_of :receivable_amount, PaypalCurrency
           object_of :exchange_rate, String
           object_of :fmf_details, FmfDetails
           object_of :receipt_id, String
@@ -686,7 +686,7 @@ module PayPal::SDK
         end
       end
 
-      class Order < Base
+      class PaypalOrder < Base
         def self.load_members
           object_of :id, String
           object_of :purchase_unit_reference_id, String
@@ -742,7 +742,7 @@ module PayPal::SDK
           object_of :is_final_capture, Boolean
           object_of :state, String
           object_of :parent_payment, String
-          object_of :transaction_fee, Currency
+          object_of :transaction_fee, PaypalCurrency
           object_of :create_time, String
           object_of :update_time, String
           array_of  :links, Links
@@ -828,7 +828,7 @@ module PayPal::SDK
           object_of :reference_number, String
           object_of :instruction_type, String
           object_of :recipient_banking_instruction, RecipientBankingInstruction
-          object_of :amount, Currency
+          object_of :amount, PaypalCurrency
           object_of :payment_due_date, String
           object_of :note, String
           array_of  :links, Links
@@ -939,7 +939,7 @@ module PayPal::SDK
           object_of :note, String
           object_of :merchant_memo, String
           object_of :logo_url, String
-          object_of :total_amount, Currency
+          object_of :total_amount, PaypalCurrency
           array_of  :payment_details, PaymentDetail
           array_of  :refund_details, RefundDetail
           object_of :metadata, Metadata
@@ -1266,7 +1266,7 @@ module PayPal::SDK
 
         def self.load_members
               object_of :recipient_type, String
-              object_of :amount, Currency
+              object_of :amount, PaypalCurrency
               object_of :note, String
               object_of :receiver, String
               object_of :sender_item_id, String
@@ -1294,7 +1294,7 @@ module PayPal::SDK
               object_of :payout_item_id, String
               object_of :transaction_id, String
               object_of :transaction_status, String
-              object_of :payout_item_fee, Currency
+              object_of :payout_item_fee, PaypalCurrency
               object_of :payout_batch_id, String
               object_of :sender_batch_id, String
               object_of :payout_item, PayoutItem
@@ -1321,8 +1321,8 @@ module PayPal::SDK
               object_of :time_created, String
               object_of :time_completed, String
               object_of :sender_batch_header, PayoutSenderBatchHeader
-              object_of :amount, Currency
-              object_of :fees, Currency
+              object_of :amount, PaypalCurrency
+              object_of :fees, PaypalCurrency
               object_of :errors, Error
         end
 
@@ -1348,7 +1348,7 @@ module PayPal::SDK
           object_of :name, String
           object_of :description, String
           object_of :quantity, Number
-          object_of :unit_price, Currency
+          object_of :unit_price, PaypalCurrency
           object_of :tax, Tax
           object_of :date, String
           object_of :discount, Cost
@@ -1360,7 +1360,7 @@ module PayPal::SDK
           object_of :email, String
           object_of :first_name, String
           object_of :last_name, String
-          object_of :address, Address
+          object_of :address, PaypalAddress
           object_of :business_name, String
           object_of :phone, Phone
           object_of :fax, Phone
@@ -1376,7 +1376,7 @@ module PayPal::SDK
           object_of :first_name, String
           object_of :last_name, String
           object_of :business_name, String
-          object_of :address, Address
+          object_of :address, PaypalAddress
           object_of :language, String
           object_of :additional_info, String
         end
@@ -1387,7 +1387,7 @@ module PayPal::SDK
           object_of :first_name, String
           object_of :last_name, String
           object_of :business_name, String
-          object_of :address, Address
+          object_of :address, PaypalAddress
           object_of :email, String
         end
       end
@@ -1441,8 +1441,8 @@ module PayPal::SDK
           object_of :recipient_business_name, String
           object_of :number, String
           object_of :status, String
-          object_of :lower_total_amount, Currency
-          object_of :upper_total_amount, Currency
+          object_of :lower_total_amount, PaypalCurrency
+          object_of :upper_total_amount, PaypalCurrency
           object_of :start_invoice_date, String
           object_of :end_invoice_date, String
           object_of :start_due_date, String
@@ -1467,13 +1467,13 @@ module PayPal::SDK
       class Cost < Base
         def self.load_members
           object_of :percent, Number
-          object_of :amount, Currency
+          object_of :amount, PaypalCurrency
         end
       end
 
       class ShippingCost < Base
         def self.load_members
-          object_of :amount, Currency
+          object_of :amount, PaypalCurrency
           object_of :tax, Tax
         end
       end
@@ -1483,14 +1483,14 @@ module PayPal::SDK
           object_of :id, String
           object_of :name, String
           object_of :percent, Number
-          object_of :amount, Currency
+          object_of :amount, PaypalCurrency
         end
       end
 
       class CustomAmount < Base
         def self.load_members
           object_of :label, String
-          object_of :amount, Currency
+          object_of :amount, PaypalCurrency
         end
       end
 
@@ -1544,8 +1544,8 @@ module PayPal::SDK
           object_of :recipient_business_name, String
           object_of :number, String
           object_of :status, String
-          object_of :lower_total_amount, Currency
-          object_of :upper_total_amount, Currency
+          object_of :lower_total_amount, PaypalCurrency
+          object_of :upper_total_amount, PaypalCurrency
           object_of :start_invoice_date, String
           object_of :end_invoice_date, String
           object_of :start_due_date, String
@@ -1624,7 +1624,7 @@ module PayPal::SDK
           object_of :frequency_interval, String
           object_of :frequency, String
           object_of :cycles, String
-          object_of :amount, Currency
+          object_of :amount, PaypalCurrency
           array_of  :charge_models, ChargeModels
         end
       end
@@ -1633,7 +1633,7 @@ module PayPal::SDK
         def self.load_members
           object_of :id, String
           object_of :type, String
-          object_of :amount, Currency
+          object_of :amount, PaypalCurrency
         end
       end
 
@@ -1641,9 +1641,9 @@ module PayPal::SDK
         def self.load_members
           object_of :id, String
           object_of :type, String
-          object_of :max_billing_amount, Currency
+          object_of :max_billing_amount, PaypalCurrency
           object_of :occurrences, String
-          object_of :amount_range, Currency
+          object_of :amount_range, PaypalCurrency
           object_of :buyer_editable, String
         end
       end
@@ -1651,7 +1651,7 @@ module PayPal::SDK
       class MerchantPreferences < Base
         def self.load_members
           object_of :id, String
-          object_of :setup_fee, Currency
+          object_of :setup_fee, PaypalCurrency
           object_of :cancel_url, String
           object_of :return_url, String
           object_of :notify_url, String
@@ -1736,7 +1736,7 @@ module PayPal::SDK
 	            object_of :start_date, String
               object_of :agreement_details, AgreementDetails
 	            object_of :payer, Payer
-	            object_of :shipping_address, Address
+	            object_of :shipping_address, PaypalAddress
 	            object_of :override_merchant_preferences, MerchantPreferences
 	          array_of  :override_charge_models, OverrideChargeModel
 	            object_of :plan, Plan
@@ -1812,7 +1812,7 @@ module PayPal::SDK
         end
 
         def set_balance(currency)
-          currency = Currency.new(currency) unless currency.is_a? Currency
+          currency = PaypalCurrency.new(currency) unless currency.is_a? PaypalCurrency
           path = "v1/payments/billing-agreements/#{self.id}/set-balance"
           response = api.post(path, currency.to_hash, http_header)
           self.merge!(response)
@@ -1840,12 +1840,12 @@ module PayPal::SDK
       end
       class AgreementDetails < Base
         def self.load_members
-          object_of :outstanding_balance, Currency
+          object_of :outstanding_balance, PaypalCurrency
           object_of :cycles_remaining, String
           object_of :cycles_completed, String
           object_of :next_billing_date, String
           object_of :last_payment_date, String
-          object_of :last_payment_amount, Currency
+          object_of :last_payment_amount, PaypalCurrency
           object_of :final_payment_date, String
           object_of :failed_payment_count, String
         end
@@ -1854,14 +1854,14 @@ module PayPal::SDK
       class OverrideChargeModel < Base
         def self.load_members
           object_of :charge_id, String
-          object_of :amount, Currency
+          object_of :amount, PaypalCurrency
         end
       end
 
       class AgreementStateDescriptor < Base
         def self.load_members
           object_of :note, String
-          object_of :amount, Currency
+          object_of :amount, PaypalCurrency
         end
       end
 
@@ -1876,9 +1876,9 @@ module PayPal::SDK
           object_of :transaction_id, String
           object_of :status, String
           object_of :transaction_type, String
-          object_of :amount, Currency
-          object_of :fee_amount, Currency
-          object_of :net_amount, Currency
+          object_of :amount, PaypalCurrency
+          object_of :fee_amount, PaypalCurrency
+          object_of :net_amount, PaypalCurrency
           object_of :payer_email, String
           object_of :payer_name, String
           object_of :time_updated, String
