@@ -962,7 +962,7 @@ module PayPal::SDK
         end
 
         def remind(notification)
-          notification = Notification.new(notification) unless notification.is_a? Notification
+          notification = PaypalNotification.new(notification) unless notification.is_a? PaypalNotification
           path = "v1/invoicing/invoices/#{self.id}/remind"
           response = api.post(path, notification.to_hash, http_header)
           self.merge!(response)
@@ -1528,7 +1528,7 @@ module PayPal::SDK
         end
       end
 
-      class Notification < Base
+      class PaypalNotification < Base
         def self.load_members
           object_of :subject, String
           object_of :note, String
