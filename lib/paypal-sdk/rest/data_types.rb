@@ -1238,7 +1238,7 @@ module PayPal::SDK
         end
       end
 
-      class Payout < Base
+      class PaypalPayout < Base
 
         def self.load_members
             object_of :sender_batch_header, PayoutSenderBatchHeader
