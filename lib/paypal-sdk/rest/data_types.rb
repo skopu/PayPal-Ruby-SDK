@@ -247,7 +247,7 @@ module PayPal::SDK
         end
       end
 
-      class BankAccount < Base
+      class PaypalBankAccount < Base
         def self.load_members
           object_of :id, String
           object_of :account_number, String
@@ -307,7 +307,7 @@ module PayPal::SDK
         end
       end
 
-      class ExtendedBankAccount < BankAccount
+      class ExtendedBankAccount < PaypalBankAccount
         def self.load_members
           object_of :mandate_reference_number, String
         end
@@ -912,7 +912,7 @@ module PayPal::SDK
 
       class BankAccountsList < Base
         def self.load_members
-          array_of  :bank_accounts, BankAccount
+          array_of  :bank_accounts, PaypalBankAccount
           object_of :count, Integer
           object_of :next_id, String
         end
