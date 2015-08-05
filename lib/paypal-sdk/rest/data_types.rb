@@ -918,7 +918,7 @@ module PayPal::SDK
         end
       end
 
-      class Invoice < Base
+      class PaypalInvoice < Base
         def self.load_members
           object_of :id, String
           object_of :number, String
@@ -1339,7 +1339,7 @@ module PayPal::SDK
       class Invoices < Base
         def self.load_members
           object_of :total_count, Integer
-          array_of  :invoices, Invoice
+          array_of  :invoices, PaypalInvoice
         end
       end
 
